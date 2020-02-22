@@ -7,3 +7,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
   - [Matrix Modulo Exponentiation](Exponentiation/matrix-modular-exponentiation.cpp)
 - [Stack Algorithm](Stack_Algorithms)
   - [Largest Histogram](Stack_Algorithms/Largest-histogram.cpp)
+- [Dynamic_Programming](Dynamic_Programming)
+  - [Coin Change Problem I](Coin-change-I.cpp)
+  - [Coin Change Problem II](Coin-change-II.cpp)
+ 
