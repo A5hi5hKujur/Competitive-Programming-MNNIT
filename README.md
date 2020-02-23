@@ -8,6 +8,6 @@ This repository contains C++ code of all the topics discussed or I learnt during
 - [Stack Algorithm](Stack_Algorithms)
   - [Largest Histogram](Stack_Algorithms/Largest-histogram.cpp)
 - [Dynamic_Programming](Dynamic_Programming)
-  - [Coin Change Problem I](Coin-change-I.cpp)
+  - [Coin Change Problem I](coin_change_permutation.cpp)
   - [Coin Change Problem II](Coin-change-II.cpp)
  
