@@ -7,8 +7,9 @@ This repository contains C++ code of all the topics discussed or I learnt during
   - [Matrix Modulo Exponentiation](Exponentiation/matrix-modular-exponentiation.cpp)
 - [Stack Algorithm](Stack_Algorithms)
   - [Largest Histogram](Stack_Algorithms/Largest-histogram.cpp)
-- [Dynamic_Programming](Dynamic_Programming)
+- [Dynamic Programming](Dynamic_Programming)
   - [Coin Change Problem I](Dynamic_Programming/coin_change_permutation.cpp)
   - [Coin Change Problem II](Coin-change-II.cpp)
   - [Kadane's Algorithm (Largest Sub-array)](Dynamic_Programming/kadane-algo-largest-subarray.cpp)
- 
+- [Recursive Algorithm](Recursive_Algorithms)
+  - [Eucleadian GCD](Recursive_Algorithms/eudleadian_gcd.cpp)
