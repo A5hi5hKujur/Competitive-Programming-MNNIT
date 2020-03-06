@@ -12,4 +12,4 @@ This repository contains C++ code of all the topics discussed or I learnt during
   - [Coin Change Problem II](Coin-change-II.cpp)
   - [Kadane's Algorithm (Largest Sub-array)](Dynamic_Programming/kadane-algo-largest-subarray.cpp)
 - [Recursive Algorithm](Recursive_Algorithms)
-  - [Eucleadian GCD](Recursive_Algorithms/eudleadian_gcd.cpp)
+  - [Eucleadian GCD](Recursive_Algorithms/eucleadian_gcd.cpp)
