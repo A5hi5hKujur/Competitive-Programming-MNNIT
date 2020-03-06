@@ -3,7 +3,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
 - [Exponentiation](Exponentiation)
   - [Fast Exponentiation](Exponentiation/fast-exponentiation.cpp)
   - [Modulo Exponentiation](Exponentiation/modulo-exponentiation.cpp)
-  - [Matrix Exponentiation](Exponentiation/matrix-exponentiation{nth fibbonacci}.cpp)
+  - [Matrix Exponentiation(Nth Fibonacci number)](Exponentiation/matrix-exponentiation.cpp)
   - [Matrix Modulo Exponentiation](Exponentiation/matrix-modular-exponentiation.cpp)
 - [Stack Algorithm](Stack_Algorithms)
   - [Largest Histogram](Stack_Algorithms/Largest-histogram.cpp)
