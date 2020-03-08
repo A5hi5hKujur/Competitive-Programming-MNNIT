@@ -21,3 +21,5 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Painter's Problem](Searching_Algorithms/Binary_Search/painters_problem.cpp)
     - [Counting Occurrences](Searching_Algorithms/Binary_Search/occurrence_count.cpp)
     - [Just Bigger Element](Searching_Algorithms/Binary_Search/just_bigger.cpp)
+- [Precomputation](Precomputation)
+  - [Prefix Sum](Precomputation/prefix_sum.cpp)
