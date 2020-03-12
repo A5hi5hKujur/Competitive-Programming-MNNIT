@@ -12,6 +12,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
   - [Coin Change Problem II](Dynamic_Programming/minimum_coin_change.cpp)
   - [Kadane's Algorithm (Largest Sub-array)](Dynamic_Programming/kadane-algo-largest-subarray.cpp)
   - [Knapsack Problem](Dynamic_Programming/knapsack.cpp)
+  - [Sieve of Eratosthenes](Dynamic_Programming/sieve_of_eratosthenes.cpp)
 - [Recursive Algorithm](Recursive_Algorithms)
   - [Eucleadian GCD](Recursive_Algorithms/eucleadian_gcd.cpp)
 - [Searching Algorithms](Searching_Algorithms)
