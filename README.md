@@ -24,3 +24,5 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Just Bigger Element](Searching_Algorithms/Binary_Search/just_bigger.cpp)
 - [Precomputation](Precomputation)
   - [Prefix Sum](Precomputation/prefix_sum.cpp)
+- [Greedy Algorithms](Greedy_Algorithms)
+  - [Fractional Knapsack](Greedy_Algorithms/fractional_knapsack.cpp)
