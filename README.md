@@ -1,6 +1,6 @@
 # Competitive-Programming-MNNIT
 This repository contains C++ code of all the topics discussed or I learnt during my time at MNNIT, Allahabad.
-- [Data Structures](Data_Structures)
+- [Data Structures](Data%Structures)
   - [Tree](Data_Structures/Tree)
     - [Tree Traversal](Data_Structures/Tree/traversal.c)
 - [Exponentiation](Exponentiation)
