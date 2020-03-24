@@ -18,13 +18,18 @@ Postorder Traversal :
 *******************************************************************************/
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> // package containing malloc()
+
+//--------------------- Node Structure (Binary Tree) ---------------------------
 struct node{    // node structure.
     int data;
     struct node* left;  // link to left nodes
     struct node* right; // link to right nodes
 };
-struct node* newNode(int data)  // function that returns a newly created node
+//------------------------------------------------------------------------------
+
+//-------------------- Function to Allocate New Node ---------------------------
+struct node* newNode(int data)
 {
     struct node* node = (struct node*)malloc(sizeof(struct node));  // dynamic memory allocation
     node -> data = data;    // assign new data
@@ -33,6 +38,9 @@ struct node* newNode(int data)  // function that returns a newly created node
 
     return node; // return newly created node with data value and empty links
 }
+//------------------------------------------------------------------------------
+
+//------------------------- POST ORDER TRAVERSAL -------------------------------
 void postorder(struct node* parent)   // left - right - root
 {
     if(parent == NULL) return;    // start backtracking at the leaves.
@@ -40,6 +48,9 @@ void postorder(struct node* parent)   // left - right - root
     postorder(parent -> right); // travere right
     printf("%d ", parent -> data); // print node
 }
+//------------------------------------------------------------------------------
+
+//-------------------------- INORDER TRAVERSAL ---------------------------------
 void inorder(struct node* parent) // left - root - right
 {
     if(parent == NULL) return;    // start backtracking at the leaves.
@@ -47,6 +58,9 @@ void inorder(struct node* parent) // left - root - right
     printf("%d ", parent -> data); // print node
     inorder(parent -> right); // traverse right
 }
+//------------------------------------------------------------------------------
+
+//-------------------------- PREORDER TRAVERSAL --------------------------------
 void preorder(struct node* parent)    // root - left - right
 {
     if(parent == NULL) return;    // start backtracking at the leaves.
@@ -54,11 +68,11 @@ void preorder(struct node* parent)    // root - left - right
     preorder(parent -> left); // travere left
     preorder(parent -> right); // travere right
 }
-
+//------------------------------------------------------------------------------
 int main()
 {
     //construction of tree
-    struct node *root = newNode(1);
+    struct node* root = newNode(1);
     root -> left      = newNode(2);
     root -> right     = newNode(3);
     root -> left -> left = newNode(4);
