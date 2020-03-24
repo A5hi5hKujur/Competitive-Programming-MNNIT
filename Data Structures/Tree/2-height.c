@@ -1,5 +1,5 @@
 /******************************************************************************
-Height of a Tree :
+Height of a Tree / Depth of Tree :
 
 Here height of a tree is maximum number of nodes on root to leaf path.
 
