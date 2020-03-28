@@ -4,6 +4,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
   - [Tree](Data%20Structures/Tree)
     - [Tree Traversal](Data%20Structures/Tree/1-traversal.c)
     - [Height/Depth of a Tree](Data%20Structures/Tree/2-height.c)
+    - [Binary Search Tree (BST), Search & Add](Data%20Structures/Tree/3-BST-search-add.c)
 - [Exponentiation](Exponentiation)
   - [Fast Exponentiation](Exponentiation/fast-exponentiation.cpp)
   - [Modulo Exponentiation](Exponentiation/modulo-exponentiation.cpp)
