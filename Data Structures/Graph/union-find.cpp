@@ -42,6 +42,13 @@
 
   5. Display informations (END)
 
+  AT THE END OF THE QUERIES, VERTICES WITH :
+  connections = 1 : the disjoint set consists of only the root element.
+  connections = 0 : the disjoint set has been dissolved into another.
+
+  - Minimum connections (conn > 1 && conn < min)
+  - Maximum connections (conn > max)
+  - Minimum connections can be equal to Maximum connections.
   ------------------------ PROBLEM ---------------------------------------------
   The data structure used however, vector of pairs, will be highly memory
   consuming and will exhaust its limit in mildly large values.
@@ -58,6 +65,7 @@
 
   P.S : I observed this problem while submitting this to an online judge. The
        algorithm however remains unchanged.
+
 --------------------------------------------------------------------------------
 */
 
@@ -92,6 +100,7 @@ int findRoot(int x)
 void Union(int x, int y){
   arr[x].second += arr[y].second; // all of y's connections are added to x's connections.
   arr[y].first = arr[x].first;  // y's root is now x's root.
+  arr[y].second = 0 // y's connections are now dissolved.
 }
 //------------------------------------------------------------------------------
 int main()
@@ -161,6 +170,7 @@ int findRoot(int x)
 void Union(int x, int y){
   conn[x] += conn[y];
   root[y] = root[x];
+  conn[y] = 0;
 }
 //------------------------------------------------------------------------------
 int main()
