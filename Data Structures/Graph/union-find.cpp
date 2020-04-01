@@ -127,6 +127,7 @@ int main()
         cycle++;  // there exists a cycle.
         continue; // skip this query.
       }
+      //----------- Ranked Union ----------------------------------------------
       if(arr[a].second > arr[b].second) Union(a,b); // if 'a' has more connections than 'b', 'B' IS MERGED TO 'A'
       else if(arr[a].second < arr[b].second) Union(b,a); // if 'b' has more connections than 'a', 'A' is MERGED TO 'B'
       else if(arr[a].second == arr[b].second) // if 'a' and 'b' have equal number of connections then it can be merged either way.
@@ -134,6 +135,7 @@ int main()
         if(arr[a].first < arr[b].first) Union(a,b); // if the value of the root(a) is smaller than root(b), 'B' is merged to 'A'.
         else if(arr[a].first > arr[b].first) Union(b,a); // .. you get the idea.
       }
+      //-------------- End of Ranked Union -------------------------------------
       cout << "Root of " << a << " : " << arr[a].first << "\n";
       cout << "vertiecs connected to " << a << " : " << arr[a].second << "\n";
       cout << "Root of " << b << " : " << arr[b].first << "\n";
