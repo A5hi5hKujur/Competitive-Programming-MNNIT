@@ -3,6 +3,8 @@ This repository contains C++ code of all the topics discussed or I learnt during
 - [Data Structures](Data%20Structures)
   - [Graph](Data%20Structures/Graph)
     - [Union Find](Data%20Structures/Graph/union-find.cpp)
+    - [Breadth First Search (BFS)](Data%20Structures/Graph/BFS.cpp)
+    - [Depth First Search (DFS)](Data%20Structures/Graph/DFS.cpp) 
   - [Tree](Data%20Structures/Tree)
     - [Tree Traversal](Data%20Structures/Tree/1-traversal.c)
     - [Height/Depth of a Tree](Data%20Structures/Tree/2-height.c)
