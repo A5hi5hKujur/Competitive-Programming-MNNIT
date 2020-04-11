@@ -54,7 +54,7 @@ stack<int> explore;
 int visited[7] = {0}; // Array that tracks visited vertices.
 //------------------------------------------------------------------------------
 
-//--------------------------- BFS Funtions -------------------------------------
+//--------------------------- DFS Funtions -------------------------------------
 void DFS(int i) // enter starting point.
 {
     explore.push(i); // push the starting point into the stack.
