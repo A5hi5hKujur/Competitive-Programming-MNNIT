@@ -1,6 +1,8 @@
 # Competitive-Programming-MNNIT
 This repository contains C++ code of all the topics discussed or I learnt during my time at MNNIT, Allahabad.
 - [Data Structures](Data%20Structures)
+  - [Heap](Data%20Structures/Heap)
+    - [Heap Creation/Deletion/Sort](Data%20Structures/Heap/heap.cpp)
   - [Graph](Data%20Structures/Graph)
     - [Union Find](Data%20Structures/Graph/union-find.cpp)
     - [Breadth First Search (BFS)](Data%20Structures/Graph/BFS.cpp)
@@ -35,6 +37,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Just Bigger Element](Searching_Algorithms/Binary_Search/just_bigger.cpp)
 - [Sorting Algorithms](Sorting_Algorithms)
     - [Merge Sort](Sorting_Algorithms/merge_sort.cpp)
+    - [Heap Sort](Data%20Structures/Heap/heap.cpp)
 - [Precomputation](Precomputation)
   - [Prefix Sum](Precomputation/prefix_sum.cpp)
 - [Greedy Algorithms](Greedy_Algorithms)
