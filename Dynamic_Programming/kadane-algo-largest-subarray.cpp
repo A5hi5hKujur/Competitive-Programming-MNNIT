@@ -6,7 +6,7 @@ but first some context, basically we have to create a running chain of array ele
 if we choose to break the chain, we start over.
 
 Also, conceptually : This running chain would be made up of smaller running mini chains just added up to our main chain (if you can visualize).
-which would entail that : WE ONLY INCLUDE THE MINI CHAINS WHICH HELP GROW OUR MAIN CHAIN, i.e, do not add mini chains with a -ve sum to 
+which would entail that : WE ONLY INCLUDE THE MINI CHAINS WHICH HELP GROW OUR MAIN CHAIN, i.e, do not add mini chains with a -ve sum to
 our main chain, that will only hurt our chain. And we don't hurt the one's we love.
 
 lets begin :
@@ -29,12 +29,12 @@ int main()
     cin >> n;
      int arr[n];  // Array.
     for(int i=0; i<n; i++) cin >> arr[i];   // Array Input
-    
+
     int sum = 0;   // variable that stores the ongoing sum of the subarray.
     int max = INT_MIN;      // variable that stores the maximum sum of the largest subarray
-        
+
     for(int i=0; i<n; i++) // move linearly.
-    {   
+    {
         sum += arr[i];  // add the element of the array to the ongoing chain.
         if(max < sum)   // if the trailing sum is greater than the maximum value found till now.
         {
@@ -46,6 +46,5 @@ int main()
         }
     } // The chain continues with the updated value of the "sum", which should be a non-negative value
     cout << max << endl;   // Displays Kadane's maximum sum array. 
-    for(int i=start; i<=end; i++) cout << arr[i] << " "; // display the actual sub-array.
     return 0;
 }

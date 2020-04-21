@@ -61,7 +61,7 @@ void DFS(int i) // enter starting point.
     while(!explore.empty()) // keep exploring until there are vertices to explore.
     {
         int vertix = explore.top(); // start exploring with the topmost vertix.
-        explore2.pop();
+        explore.pop();
         if(!visited[vertix]) // if the vertix is unvisited.
         {
             cout << vertix << " "; // print it out.

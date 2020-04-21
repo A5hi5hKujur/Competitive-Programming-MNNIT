@@ -12,7 +12,7 @@
   * Vector pairs (practically)
   arr = [(x,y) ,(), ()...]
   arr[i].first : stores root information. (x)
-  arr[i].first : stores total number of vertices connected to it. (y)
+  arr[i].second : stores total number of vertices connected to it. (y)
   where,
    ___________________________________________
   | index of a vector = label of that vertix.|
