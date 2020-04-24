@@ -41,7 +41,7 @@ int matrix[][5] = {{0,2,0,6,0},
 
 //------ Function to return index(vertix) with minimum edge weight -------------
 
-int minEdge(int key[], int visited[])
+int minEdge(int key[], int visited[]) // O(n)
 {
   int min_index, min = INT_MAX;
   for(int i=0; i<v; i++)
@@ -53,6 +53,17 @@ int minEdge(int key[], int visited[])
     }
   }
   return min_index;
+}
+//-------------------------------------------------------------------------------
+//psudo code to use min heap insted of linear search to find vertix with minimum edge in O(log n)
+// min heap containing pairs(edge weight, vertix) that initially stores all edge weights.
+priority_queue<pair<int,int>, greater<int>()> min_heap;
+min_heap = key[]; // syntactically galat hai bss feel samjho.
+int minEdge()
+{
+  int min_vertix = min_heap.top(); // returns the vertix with the minimum edge weight.
+  min_heap.pop(); // once the vertix is visited it is popped from the heap
+  return min_vertix.second;
 }
 //------------------------------------------------------------------------------
 

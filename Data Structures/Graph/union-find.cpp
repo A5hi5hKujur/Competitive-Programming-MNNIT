@@ -157,14 +157,12 @@ vector<int> conn;
 //------------ Function to Find the root of the selected vertix. ---------------
 int findRoot(int x)
 {
-  int element = x;
-  int find = root[element];
-  while(element != find){
-    element = find;
-    find = root[element];
+  while(x != root[x])
+  {
+    root[x] = root[root[x]]; // optimization
+    x = root[x];
   }
-  if(x != element) root[element] = element; // OPTIMIZATION.
-  return element;
+  return x;
 }
 //------------------------------------------------------------------------------
 
