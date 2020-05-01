@@ -59,7 +59,6 @@ int main()
 
   cout << "Enter the length of the array : ";
   int n; cin >> n;
-
   int arr[n];
   cout << "Enter " << n << " elements in the array : \n";
   for(int i=0; i<n; i++) cin >> arr[i];
