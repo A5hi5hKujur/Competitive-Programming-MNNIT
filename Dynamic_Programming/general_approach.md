@@ -87,9 +87,7 @@ CONVERT TOP-DOWN(MEMOIZATION) TO BOTTOM UP :
 
   6. previous[] = current[];  ---> current row becomes previous row.
 
-  7. current[w+1] = {0}; ---> current row gets reset to 0.
-
-  8. Print(dp[n][w]).
+  7. Print(dp[n][w]).
 
 
 PARENT PROBLEMS OF DP :

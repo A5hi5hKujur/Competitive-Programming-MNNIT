@@ -26,6 +26,8 @@ This repository contains C++ code of all the topics discussed or I learnt during
 - [Dynamic Programming](Dynamic_Programming)
   - [0/1 Knapsack Problems](Dynamic_Programming/0-1_knapsack)
     - [Knapsack Problem](Dynamic_Programming/0-1_knapsack/knapsack.cpp)
+    - [Knapsack Problem Space Optimized](Dynamic_Programming/0-1_knapsack/knapsack_space_optimized.cpp)
+    - [Subset Sum Problem](Dynamic_Programming/0-1_knapsack/subset_sum.cpp)
   - [Unbounded Knapsack Problems](Dynamic_Programming/unbounded_knapsack)
     - [Coin Change : Total combinations](Dynamic_Programming/unbounded_knapsack/coin_change_permutation.cpp)
     - [Coin Change : Minimum number of denominations](Dynamic_Programming/unbounded_knapsack/minimum_coin_change.cpp)
