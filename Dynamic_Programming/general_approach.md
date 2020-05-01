@@ -28,6 +28,70 @@ APPROACH TO SOLVE DYNAMIC PROBLEM (Recursion + Memoization) :
   - If a value is in not occupied in the dp array, compute the best possible solution
     for the corresponding inputs and store in the dp array.
 
+CONVERT TOP-DOWN(MEMOIZATION) TO BOTTOM UP :
+
+1. Since Recursion is the parent technique of Dynamic Programming, both top-down(recursive) and bottom-up(iterative)
+   method follow the same approach of solving dynamic problem, with an exception, the iterative procedure do not use
+   an auxiliary stack to store function calls. Time complexity remains same however.
+
+2. In the iterative method we simulate recursion where a M x N grid(same as memoization) dp, contain the answers for
+   a particular sub-problem of corresponding dp[i][j]. The procedure takes the help of the previous sub-problem in order
+   to solve the current sub-problem. The dp[][] matrix is populated in a uniform way(diagonally) instead of being
+   "scattered" as populated in the case of memoization. The solution of the "asked-problem" is obtained on dp[m][n].
+
+3. Steps to convert recursive method to iterative method :
+  - Decide The constants / variables.
+  - Find a recursive solution with base case and everything.
+  - Create the dp matrix of size dp[m+1][n+1]. where m and n are the variables driving the dynamic program.
+  - Initialize the matrix 0th row and 0th column, where all the cells in these row and column have the value of the "base-case".
+  - Populating the rest of the dp with the corresponding dp[i][j] values starting from i = 1 ; j = 1.
+  - The code for the choice diagram remains the same where answer for a particular sub problem i,j would be stored in dp[i][j].
+  - The answer for the "asked problem" of constraint 'm' and 'n', would be in block dp[m][n].
+
+  Note : we do not bother to pre-initialize the rest of the matrix with -1 since we know the progression of solutions obtained
+         for each sub-problem would be uniformly filled.
+
+  OPTIMIZED SPACE COMPLEXITY 0-1 KNAPSACK ITERATIVE :
+
+  A given 0-1 knapsack problem where :
+  - Number of items can be upto : 0 - 500.
+  - Knapsack capacity can be upto : 20000000
+
+  Clearly a dp of size dp[500][20000000] is not feasible. And there is NO WAY to solve this problem by memoization since memoization
+  only works with smaller constraints. (something like dp[200][20000]).
+  - We have to convert the recursive approach into an iterative one.
+  - Instead of building a whole matrix of dp[500][20000000] we only work with 2 rows :
+    1. To store all sub-problem solutions of the previous row.
+    2. To store all sub-problem solutions of the next row. (to be calculated by the previous row)
+
+  Approach :  
+  Time Complexity :  O(n x w) where, n : no. of items.
+                                     w : maximum knapsack capacity.
+                     but since n is exponentially smaller than w, complexity != O(n^2).
+
+  Space Complexity : O(2 x (w+1))
+
+  1. Create 2 arrays of size w+1 : current[w+1]; previous[w+1];
+
+  2. Run an outer loop to iterate through all the the items(n) :
+      for(int i=0; i<n; i++){ .... }
+
+  3. Run an inner loop to iterate through the current variation of the weight :
+      for(int j = weight[i]; j <=w ; j++){ ... }
+
+  4. Choices :
+     - Pick the item i : choice_1 = value[i] + prev[j - weight[i]];  ---> Value of current item + value of previous item in (j - weight[i])th position.
+     - Dont Pick item i : choice_2 = prev[j]; ---> Since you did not pick anything value remains the same.
+
+  5. Optimal choice : current[j] = max(choice_1, choice_2);
+
+  6. previous[] = current[];  ---> current row becomes previous row.
+
+  7. current[w+1] = {0}; ---> current row gets reset to 0.
+
+  8. Print(dp[n][w]).
+
+
 PARENT PROBLEMS OF DP :
 
 1. 0/1 Knapsack :
