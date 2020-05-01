@@ -17,7 +17,27 @@ weight[] = {1, 1, 1}, knap_cap = 2, value[] = {10, 20, 30}, items = 3
 K(0,2)  K(0,1)  K(0,1)  K(0,0)  K(0,1)   K(0,0) --> base case 1
 
 for any such function call where there would have been a negetive value for knap_cap,i.e:
-          K(2,-2) --> base case 2, which entails that whatever "item" generated these parameters need to be discarded. 
+          K(2,-2) --> base case 2, which entails that whatever "item" generated these parameters need to be discarded.
+
+------------------------------------- Solving Approach -------------------------------------------------------
+1. Constants and variables :
+  constants : weight array, value array.
+  variables : number of items left, knapsack capacity left.
+
+2. base case : Smallest possible VALID input :
+   - if knapsack capacity = 0 : no profit can be made, since no items can be included.
+   - if number of items = 0 : no profit can be made, since there are no items left to add.
+   therefor, in both the cases return profit = 0.
+
+3. Choice diagram : (inclusion starts from n-1th index : 0-based index)
+
+                    if(picked element weight < knapsack capacity) ------- else ------ Dont include item.
+                              /                   \                                   knap(wt, val, w, n-1)
+                            /                      \
+                    Include item                Dont include item
+  knap(wt, val, (w - wt[n-1]), n-1)         knap(wt, val, w, n-1)
+
+---------------------------------------------------------------------------------------------------------------
 */
 #include <bits/stdc++.h>
 using namespace std;
