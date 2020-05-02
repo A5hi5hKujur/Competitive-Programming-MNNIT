@@ -40,11 +40,11 @@ bool subset(int arr, int n, int sum)
   if(dp[n][sum] == -1)
   {
     // Base case :
-    if(n == 0 && sum > 0) return false;   // 1. No elements left to form subset while sum to be calculated.
-    if(sum == 0) return true;             // 2. No sum to be calculated whatever.
+    if(n == 0 && sum > 0) dp[n][sum] =  false;   // 1. No elements left to form subset while sum to be calculated.
+    if(sum == 0) dp[n][sum] =  true;             // 2. No sum to be calculated whatever.
 
     // Choice Diagram :
-    if(arr[n-1] < sum)                   // number picked is smaller than sum to be calculated.
+    if(arr[n-1] <= sum)                   // number picked is smaller than sum to be calculated.
       dp[n][sum] = subset(arr, n-1, sum - arr[n-1]) || subset(arr, n-1, sum);
                   // either pick the number        or   dont pick the number.
     else                                // number picked is bigger than the sum to be calculated.

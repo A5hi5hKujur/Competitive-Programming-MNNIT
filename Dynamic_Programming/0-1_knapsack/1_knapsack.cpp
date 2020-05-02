@@ -54,7 +54,8 @@ int dp[2000][2000]; // Global DP matrix
 */
 int knap(int items, int knap_cap, int value[], int weight[])
 {
-    if(dp[items][knap_cap] == -1){
+    if(dp[items][knap_cap] == -1)
+    {
         if(items == 0 || knap_cap == 0) // Base case 1 : when there are either no items left or no room left in the knapsack.
           dp[items][knap_cap] = 0;
 
