@@ -28,19 +28,18 @@ using namespace std;
 int dp[2000][2000];
 int countSubset(int arr[], int n, int sum)
 {
-  if(dp[n][sum] == -1)
-  {
+    if(dp[n][sum] != -1) return dp[n][sum]; // if dp already occupied.
+
     // base case :
-    if(n == 0 && sum > 0) dp[n][sum] =  0;
-    if(n >= 0 && sum == 0) dp[n][sum] = 1;
+    if(n == 0 && sum > 0) return dp[n][sum] =  0;
+    if(n >= 0 && sum == 0) return dp[n][sum] = 1;
 
     // choice diagram :
     if(arr[n-1] <= sum)
       dp[n][sum] = countSubset(arr, n-1, sum - arr[n-1]) + countSubset(arr, n-1, sum);
     else
       dp[n][sum] = countSubset(arr, n-1, sum);
-  }
-  return dp[n][sum];
+    return dp[n][sum];
 }
 int main()
 {

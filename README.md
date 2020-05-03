@@ -30,6 +30,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Subset Sum Problem](Dynamic_Programming/0-1_knapsack/3_subset_sum.cpp)
     - [Equal Sum Partition](Dynamic_Programming/0-1_knapsack/4_equal_sum_partition.cpp)
     - [Count Subset Sum](Dynamic_Programming/0-1_knapsack/5_count_subset_sum.cpp)
+    - [Sum partition minimum difference](Dynamic_Programming/0-1_knapsack/6_min_sum_partition_diff.cpp)
   - [Unbounded Knapsack Problems](Dynamic_Programming/unbounded_knapsack)
     - [Coin Change : Total combinations](Dynamic_Programming/unbounded_knapsack/coin_change_permutation.cpp)
     - [Coin Change : Minimum number of denominations](Dynamic_Programming/unbounded_knapsack/minimum_coin_change.cpp)
