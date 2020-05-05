@@ -38,6 +38,8 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Coin Change : Minimum number of denominations](Dynamic_Programming/unbounded_knapsack/minimum_coin_change.cpp)
   - [Kadane's Algorithm](Dynamic_Programming/kadane)
     - [Largest Sub-array](Dynamic_Programming/kadane/kadane-algo-largest-subarray.cpp)
+  - [Largest Common Subsequence (LCS)](Dynamic_Programming/largest_common_subsequence)
+    - [LCS Count](Dynamic_Programming/largest_common_subsequence/1_lcs.cpp)
   - [Sieve of Eratosthenes](Dynamic_Programming/sieve_of_eratosthenes.cpp)
 - [Recursive Algorithm](Recursive_Algorithms)
   - [Eucleadian GCD](Recursive_Algorithms/eucleadian_gcd.cpp)
