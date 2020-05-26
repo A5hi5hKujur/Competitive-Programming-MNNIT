@@ -6,13 +6,16 @@
   A key advantage of the Eucleadian Algorithm is that it can find the GCD efficiently without having to compute the prime factors.
 
   gcd(a,b,c) = gcd(a,gcd(b,c)) and so on...
+
+  The algorithm is derived from the property :
+  gcd(a,b) = gcd(a = a-b, b) (until a < b)
 */
 #include <bits/stdc++.h>
 using namespace std;
-int gcd(int a, int b)  
+int gcd(int a, int b)
 {
-  if(a == 0) return b;
-  return gcd(b%a, a);
+  if(b == 0) return a;
+  return gcd(b, a%b);
 }
 int main()
 {
