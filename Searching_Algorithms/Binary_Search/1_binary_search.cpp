@@ -16,7 +16,7 @@ int binary(int arr[], int n, int search)
     int high = n-1; // end position of the search range.
     while(high >= low)  // Search till the high is less than the low.
     {
-        int mid = (high + low) / 2; // find the middle element.
+        int mid = low + (high - low)/2 // find the middle element (overflow optimized).
         if(arr[mid] == search) return mid;  // search point = mid.
         if(search < arr[mid]) high = mid - 1; // search field is moved to the left side.
         else low = mid + 1; // else move the search field to right side.
