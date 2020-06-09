@@ -6,6 +6,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
   - [Graph](Data%20Structures/Graph)
     - [Shortest Path Algorithm](Data%20Structures/Graph/Shortest_Path_Algorithm)
       - [Prim's Algorithm](Data%20Structures/Graph/Shortest_Path_Algorithm/prims.cpp)
+      - [Kruskal's Algorithm](Data%20Structures/Graph/Shortest_Path_Algorithm/kruskal.cpp)
       - [Dijkstra's Algorithm](Data%20Structures/Graph/Shortest_Path_Algorithm/dijkstra.cpp)
     - [Union Find](Data%20Structures/Graph/union-find.cpp)
     - [Breadth First Search (BFS)](Data%20Structures/Graph/BFS.cpp)
