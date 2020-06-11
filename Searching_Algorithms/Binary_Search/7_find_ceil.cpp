@@ -46,3 +46,40 @@ int main()
     else cout << "index of Ceil of " << search << " is " << index;
     return 0;
 }
+
+/*
+    find the next greater alphabet. (ceil of a charecter)
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+int binarySearch(string str, char search)
+{
+    int ans = -1;
+    int low = 0;
+    int high = str.length() - 1;
+    while(low <= high)
+    {
+        int mid = low + (high-low)/2;
+        char temp = str[mid];
+        if(temp > search)
+        {
+            ans = mid;
+            high = mid-1;
+        }
+        else
+            low = mid + 1;
+    }
+    return ans;
+}
+int main()
+{
+    string str;
+    cin >> str;
+    char search;
+    cin >> search;
+    int index = binarySearch(str, search);
+    if(index > -1) cout << "The next greater alphabet is at position " << index;
+    else cout << "A greater alphabet doesn't exist.";
+    return 0;
+}

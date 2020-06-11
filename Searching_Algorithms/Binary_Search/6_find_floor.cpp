@@ -2,6 +2,9 @@
     Find Floor of an element (Just smaller element) :
       - Search the greatest element smaller than the key value.
       - If Key value needs to be present in order to find the floor value.
+
+    This question can also be framed as find the element with least absolute difference
+    from the search element.
 */
 #include <bits/stdc++.h>
 using namespace std;
