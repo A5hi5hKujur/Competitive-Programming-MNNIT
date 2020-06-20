@@ -21,6 +21,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Identification of Stack Problem](Data%20Structures/Stack/1_identification.cpp)
     - [First Larger Element](Data%20Structures/Stack/1_identification.cpp)
     - [Last Larger Element](Data%20Structures/Stack/2_largest_left.cpp)
+    - [Stock Span Problem]((Data%20Structures/Stack/3_stockspan.cpp)
     - [Largest Histogram](Data%20Structures/Stack/Largest-histogram.cpp)
 - [Dynamic Programming](Dynamic_Programming)
   - [0/1 Knapsack Problems](Dynamic_Programming/0-1_knapsack)
