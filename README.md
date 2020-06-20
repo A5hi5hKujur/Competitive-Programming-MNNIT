@@ -24,7 +24,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Stock Span Problem](Data%20Structures/Stack/3_stockspan.cpp)
     - [Largest Histogram](Data%20Structures/Stack/Largest-histogram.cpp)
 - [Dynamic Programming](Dynamic_Programming)
-  - [Identification of DP Problem](Dynamic_Programming/0-1_knapsack/general_approach.md)
+  - [Identification of DP Problem](Dynamic_Programming/general_approach.md)
   - [0/1 Knapsack Problems](Dynamic_Programming/0-1_knapsack)
     - [Knapsack Problem](Dynamic_Programming/0-1_knapsack/1_knapsack.cpp)
     - [Knapsack Problem Space Optimized](Dynamic_Programming/0-1_knapsack/2_knapsack_space_optimized.cpp)
