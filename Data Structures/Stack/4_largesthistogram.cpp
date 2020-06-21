@@ -26,18 +26,18 @@ eg : 1. arr[0] = 6 x 1 = 6  ; by taking a single bar of height 6.
      4. arr[2] + arr[3] + arr[4] = 3 x 4 = 12 : by taking 3 bars of height 4.
 
 --------------------------- Solving approach -----------------------------------
-1. find index of "first smaller left" element of the current element.
-2. find index of "next smaller right" element of the current element.
+1. find index of "first smaller left" element of the current element. (FSL)
+2. find index of "first smaller right" element of the current element. (FSR)
 3. find the difference of those indices and that would be the maximum consequtive width w.r.t the current element.
 eg : current(arr[3]) : FSL = arr[1] = 2
-                       NSR = arr[5] = 1
+                       FSR = arr[5] = 1
                        (5 - 1) - 1 = 3           (the extra -1 is to remove the edge bar arr[5])
                area = current x 3 = 12.
 4. Keep saving the area and comparing it with max element as you process each bar.
 
 Note : if(FSL of an element not found then)
-        NSR - (-1)
-       if(NSR of an element not found then)
+        FSR - (-1)
+       if(FSR of an element not found then)
         n - FSL
 */
 #include<bits/stdc++.h>
@@ -64,7 +64,7 @@ void FSR(int arr[], int fsr[], int n)
       st.push(i);
     }
 }
-void NSR(int arr[], int fsl[], int n)
+void FSL(int arr[], int fsl[], int n)
 {
   stack<int> st;
   for(int i=0; i<n; i++)
@@ -95,7 +95,7 @@ int main()
   int fsr[n];
   int fsl[n];
   FSR(arr, fsr, n);
-  NSR(arr, fsl, n);
+  FSL(arr, fsl, n);
 
   int max_area = INT_MIN;
   for(int i=0; i<n; i++)
