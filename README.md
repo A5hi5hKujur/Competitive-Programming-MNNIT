@@ -24,6 +24,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Stock Span Problem](Data%20Structures/Stack/3_stockspan.cpp)
     - [Largest Histogram (Easy Concept)](Data%20Structures/Stack/4_largesthistogram.cpp)
     - [Largest Histogram (Code Efficient)](Data%20Structures/Stack/Largest-histogram.cpp)
+    - [Maximum Area of a Grid in Binary Matrix](Data%20Structures/Stack/5_max_area_grid.cpp)
 - [Dynamic Programming](Dynamic_Programming)
   - [Identification of DP Problem](Dynamic_Programming/general_approach.md)
   - [0/1 Knapsack Problems](Dynamic_Programming/0-1_knapsack)

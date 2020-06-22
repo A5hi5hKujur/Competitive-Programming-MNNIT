@@ -39,50 +39,52 @@ Note : if(FSL of an element not found then)
         FSR - (-1)
        if(FSR of an element not found then)
         n - FSL
+
+Complexity : O(N x 4)
 */
 #include<bits/stdc++.h>
 using namespace std;
 
-void FSR(int arr[], int fsr[], int n)
+void FSR(int arr[], int fsr[], int n)   // function to find index of corresponding "first smaller element to the right" of all elements arr[i].
 {
     stack<int> st;
-    for(int i=n-1; i>=0; i--)
+    for(int i=n-1; i>=0; i--)           // starting the iteraction from the right of the input stream.
     {
-      if(st.empty())
-        fsr[i] = n;
-      else if(arr[st.top()] < arr[i])
-        fsr[i] = st.top();
-      else if(arr[st.top()] >= arr[i])
+      if(st.empty())                    // if stack is empty; there are no elements smaller than arr[i] in the right.
+        fsr[i] = n;                     // index of the right out of bound.
+      else if(arr[st.top()] < arr[i])   // if topmost element of the stack is less than current element
+        fsr[i] = st.top();              // you've found the index of the first smallest to the right element.
+      else if(arr[st.top()] >= arr[i]) // if the topmost element of the stack is more or equal than the current element
       {
-        while(!st.empty() && arr[st.top()] >= arr[i])
+        while(!st.empty() && arr[st.top()] >= arr[i]) // traverse to find the smaller element on the right until either you find it or exhaust the stack
           st.pop();
-        if(st.empty())
-          fsr[i] = n;
+        if(st.empty())                // if you exhaust the stack that would mean that there is no smaller element to the right side of the current element.
+          fsr[i] = n;                 // return the right bound element.
         else
-          fsr[i] = st.top();
+          fsr[i] = st.top();          // else return the index of the the smaller element that you found.
       }
-      st.push(i);
+      st.push(i);                     // push current element index into the stack.
     }
 }
-void FSL(int arr[], int fsl[], int n)
+void FSL(int arr[], int fsl[], int n) // function to find the index of corresponding "first smaller elenent to the left" of all elements arr[i].
 {
   stack<int> st;
-  for(int i=0; i<n; i++)
+  for(int i=0; i<n; i++)              // start from the left side of the input stream.
   {
-    if(st.empty())
-      fsl[i] = -1;
-    else if(arr[st.top()] < arr[i])
-      fsl[i] = st.top();
-    else if(arr[st.top()] >= arr[i])
+    if(st.empty())                    // if there is no index of element in stack that means there is no elements smaller than arr[i] in the left.
+      fsl[i] = -1;                    // return the left bound index.
+    else if(arr[st.top()] < arr[i])   // if stack top has the index of an element, smaller than the current element.
+      fsl[i] = st.top();              // return the index of the stack top element.
+    else if(arr[st.top()] >= arr[i])  // if you encounter an element that is higher or equal to the current element.
     {
-      while(!st.empty() && arr[st.top()] >= arr[i])
+      while(!st.empty() && arr[st.top()] >= arr[i]) // traverse stack until you either exhaust it or find an element that is smaller than the current element
         st.pop();
-      if(st.empty())
-        fsl[i] = -1;
+      if(st.empty())                  // if there is no index of element in stack that means there is no elements smaller than arr[i] in the left.
+        fsl[i] = -1;                  // return the left bound index.
       else
-        fsl[i] = st.top();
+        fsl[i] = st.top();            // You've found the smaller element, return the index of the stack top element.
     }
-    st.push(i);
+    st.push(i);                       // push each index into the stack.
   }
 }
 int main()
@@ -91,19 +93,19 @@ int main()
   cin >> n;
   int arr[n];
   for(int i=0; i<n; i++)
-    cin >> arr[i];
-  int fsr[n];
-  int fsl[n];
-  FSR(arr, fsr, n);
-  FSL(arr, fsl, n);
+    cin >> arr[i];              // input stream
+  int fsr[n];                   // array to store index of "first smaller right" element of all arr[i]
+  int fsl[n];                   // array to store index of "first smaller left" element of all arr[i]
+  FSR(arr, fsr, n);             // function to populate fsr[]
+  FSL(arr, fsl, n);             // function to populate fsl[]
 
-  int max_area = INT_MIN;
+  int max_area = INT_MIN;      // variable to store maximum area
   for(int i=0; i<n; i++)
   {
-    int current_block = arr[i];
-    int difference = (fsr[i] - fsl[i]) - 1;
-    int current_area = current_block * difference;
-    max_area = max(max_area, current_area);
+    int current_block = arr[i];     // height of the rectangle arr[i]
+    int difference = (fsr[i] - fsl[i]) - 1;   // width of the rectangle arr[i]
+    int current_area = current_block * difference;   // area of the rectangle arr[i]
+    max_area = max(max_area, current_area); // storing the max area in each iteration.
   }
   cout << "Maximum Area of the Histogram : " << max_area;
   return 0;
