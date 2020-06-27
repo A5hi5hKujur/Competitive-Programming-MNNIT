@@ -17,6 +17,8 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Cycle Detection](Data%20Structures/Graph/4_cycle_detection.cpp)
     - [In/Out Time of Vertices](Data%20Structures/Graph/5_in_out.cpp)
     - [Diameter of a Tree](Data%20Structures/Graph/6_tree_diameter.cpp)
+    - [Locate Bridges in a Graph](Data%20Structures/Graph/7_bridge.cpp)
+    - [Locate Articulation Point in a Connected Component](Data%20Structures/Graph/8_articulation.cpp)
   - [Tree](Data%20Structures/Tree)
     - [Tree Traversal](Data%20Structures/Tree/1-traversal.c)
     - [Height/Depth of a Tree](Data%20Structures/Tree/2-height.c)
