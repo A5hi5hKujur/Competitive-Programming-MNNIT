@@ -45,13 +45,20 @@ int Pivot(vector<int> arr)
         {
             return mid; // Pivot element found !
         }
-        else if(arr[low] <= arr[mid]) // if the left section of the array is sorted.
+        else
         {
-            low = mid+1;  // move to the right.
-        }
-        else if(arr[mid] <= arr[high])  // if the right section of the array is sorted.
-        {
-            high = mid-1; // move to the left.
+          if(arr[mid]>=arr[low] && arr[mid]<=arr[high]) // edge case where mid is the largest element.
+          {
+            return low;
+          }
+          else if(arr[low] <= arr[mid]) // if the left section of the array is sorted.
+          {
+              low = mid+1;  // move to the right.
+          }
+          else if(arr[mid] <= arr[high])  // if the right section of the array is sorted.
+          {
+              high = mid-1; // move to the left.
+          }
         }
     }
     return -1;

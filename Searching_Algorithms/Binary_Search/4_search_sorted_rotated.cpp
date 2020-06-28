@@ -27,8 +27,12 @@ int Pivot()
     int next = arr[(mid+1) % n];
     if((arr[mid] < prev) && (arr[mid] < next))
       return mid;
-    else if(arr[mid] >= arr[low]) low = mid+1;
-    else if(arr[mid] <= arr[high]) high = mid-1;
+    else
+    {
+      if(arr[mid] >= arr[low] && arr[mid] <= arr[high]) return low;
+      else if(arr[mid] >= arr[low]) low = mid+1;
+      else if(arr[mid] <= arr[high]) high = mid-1;
+    }
   }
   return -1;
 }
