@@ -22,19 +22,13 @@
 
   IMPLIMENTATION :
 
-  1. Max Heap : priority_queue<int> max_heap;
+  1. Max Heap : `priority_queue<int> max_heap;`
                  - top() : returns the max element.
-  2. Min Heap : priority_queue<int, vector<int>, greater<int>> min_heap;
+  2. Min Heap : `priority_queue<int, vector<int>, greater<int>> min_heap;`
                  - top() : returns the min element.
 
-   Operation :
-      1. size() : Displays heap size.
-                    Syntax : max_heap.size();
-      2. push() : Pushes new element in the heap.
-                    Syantax : max_heap.push(i);
-      3. pop() : Removes top element from the heap.
-                    Syntax : max_heap.pop();
-
-  typedef pair<int,int> pi;
-          1. priority_queue<pi> max_heap;
-          2. priority_queue<pi, vector<pi>, greater<pi>> min_heap;
+   OPERATIONS :
+   
+    1. size() : Displays heap size. Syntax : max_heap.size();
+    2. push() : Pushes new element in the heap. Syantax : max_heap.push(i);
+    3. pop() : Removes top element from the heap. Syntax : max_heap.pop();
