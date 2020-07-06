@@ -44,7 +44,7 @@ int matrixExpo(int n, int x, int y)
 
     if(n == 1) return y;                    // Return the second term.
     if(n == 0) return x;                    // Return the first term.
-    matrixFastExpo(resMatrix, n-1, x, y);   // Function call to perform fast expo to the constant matrix.
+    matrixFastExpo(resMatrix, n-1);   // Function call to perform fast expo to the constant matrix.
     return (resMatrix[0][0] * y) + (resMatrix[0][1] * x); // Extract the f(n) term from the now changed constant matrix.
 }
 int main()
