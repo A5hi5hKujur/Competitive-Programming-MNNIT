@@ -20,7 +20,7 @@ void multiplyMatrix(int resMatrix[2][2], int b[2][2])          // 2 Matrix Multi
         }
     }
 }
-void matrixFastExpo(int resMatrix[2][2], int n, int x, int y)
+void matrixFastExpo(int resMatrix[2][2], int n)
 {
     int constantMatrix[2][2] = {{1,1},
                                 {1,0}};     // The constant matrix for the fibonacci relation.
@@ -31,7 +31,7 @@ void matrixFastExpo(int resMatrix[2][2], int n, int x, int y)
         resMatrix[1][1] = 1;
         return;                             // End function call.
     }
-    matrixFastExpo(resMatrix, n/2, x, y);   // Matrix expo recursion call.
+    matrixFastExpo(resMatrix, n/2);   // Matrix expo recursion call.
     multiplyMatrix(resMatrix,resMatrix);    // Multiply r*r;
     if(n % 2 != 0)
         multiplyMatrix(resMatrix, constantMatrix);   // We multiply base matrix(constant matrix) to already multiplied r*r.
@@ -44,7 +44,7 @@ int matrixExpo(int n, int x, int y)
 
     if(n == 1) return y;                    // Return the second term.
     if(n == 0) return x;                    // Return the first term.
-    matrixFastExpo(resMatrix, n-1, x, y);   // Function call to perform fast expo to the constant matrix.
+    matrixFastExpo(resMatrix, n-1);   // Function call to perform fast expo to the constant matrix.
     return (resMatrix[0][0] * y) + (resMatrix[0][1] * x); // Extract the f(n) term from the now changed constant matrix.
 }
 int main()
