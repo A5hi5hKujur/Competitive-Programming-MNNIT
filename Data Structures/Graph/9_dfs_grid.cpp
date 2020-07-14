@@ -22,7 +22,7 @@ int dy[] = {1, 0, -1, 0};       // dx[0],dy[0] = up ; dx[1],dy[1] = right ; dx[2
 
 bool validMove(x, y)
 {
-  if(x > n || x < 0 || y > m || y < 0 )
+  if(x > n-1 || x < 0 || y > m-1 || y < 0 )
     return false;
   if(visited[x][y])
     return false;

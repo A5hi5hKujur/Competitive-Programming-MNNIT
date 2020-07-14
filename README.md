@@ -102,6 +102,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Heap Sort](Data%20Structures/Heap/heap.cpp)
     - [Topological Sorting in Directed Graph](Data%20Structures/Graph/topological_sort.cpp)
     - [Spiral Matrix](Sorting_Algorithms/spiral_matrix.cpp)
+    - [Counting Sort](Sorting_Algorithms/counting_sort.cpp)
 - [Precomputation](Precomputation)
   - [Prefix Sum](Precomputation/prefix_sum.cpp)
   - [Rain Water Trapping](Precomputation/rainwater_trapping.cpp)

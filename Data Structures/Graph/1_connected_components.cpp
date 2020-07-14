@@ -44,7 +44,7 @@ void dfs(int vertix, int visited[], int n)
   for(int i=1; i<=n; i++)
   {
     if(adj[vertix][i] == 1 && !visited[i])
-      dfs(i);
+      dfs(i, visited, n);
   }
 }
 int main()
