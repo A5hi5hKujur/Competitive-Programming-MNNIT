@@ -8,6 +8,19 @@
   already assigned to its respective vertix.
 
   The above process is called : Relaxation.
+
+  Where to use Dijkstra ?
+  - To find distance of all the vertices from source vertix in a graph.
+  - To find the shortest distance from source vertix to destination Vertix
+        - In this case you need not require to visit all the verticecs in the graph, if you reach the
+          destination vertix you can stop the algorithm since Dijkstra takes the best possible path at every step
+          so if a destination is reached it is likly that the shortest distance upto the destination vertix will
+          not change irrespective of how many alternate path we process. (if you found the vertix you are already in the
+          most optimal path to begin with.)
+
+  Where NOT to use Dijkstra ?
+  - Djikstra fails in the case of negative weight edges.
+      - You'll keep on "relaxing" at a single spot.
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -62,4 +75,37 @@ int main()
   int source = 0;
   Djikstra(source);
   return 0;
+}
+
+//---------------------------- Adjacency list + priority_queue -----------------
+
+void Djikstra(int source, int v)
+{
+  vector<pair<int, int>> adj[v];
+  vector<bool> visited(v, false);
+  vector<int> edge(v, INT_MAX);
+  priority_queue<pair<int,int> , vector<pair<int, int>>, greater<pair<int, int>>> min_heap;
+
+  min_heap.push({0, source});
+  edge[source] = 0;
+  visited[source] = true;
+  while(!min_heap.empty())
+  {
+    auto node = min_heap.top();
+    min_heap.pop();
+    if(edge[node.second] < node.first)      // priority queue redundant pair
+      continue;
+
+    for(auto neighbor : adj[node.second])
+    {
+      int weight = neighbor.first;
+      int vertix = neighbor.second;
+      if(!visited[vertix] && edge[node.second] + weight < edge[vertix])
+      {
+        visited[vertix] = true;
+        edge[vertix] = edge[node.second] + weight;
+        min_heap.push({edge[vertix], vertix});
+      }
+    }
+  }
 }

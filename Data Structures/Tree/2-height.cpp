@@ -53,6 +53,35 @@ int maxDepth(struct node* parent)
    else return right_height + 1;
    // return the path of the maximum height + 1 (+1 : the curent node will included in the height count)
 }
+//------------------------------------------------------------------------------
+
+//---------------------------- Diameter of a Tree ------------------------------
+/*
+Main :
+*root = createTree();
+int height = 0
+cout << Diameter(root, height);
+*/
+int Diameter(node* root, int* height)
+{
+    // left height, right height for the case where the diameter passes through root.
+    // left diameterm right diameter for the case where the diameter does not pass through root.
+    int ldiameter = 0, rdiameter = 0, lh = 0, rh = 0;
+    if(root == NULL)  // if there is no node
+    {
+        *height = 0;  // height is 0
+        return 0;
+    }
+    ldiameter = Diameter(root -> left, &lh);   // find diameter of left child, with current left height.
+    rdiameter = Diameter(root -> right, &rh); // find diameter of right child, with current right height.
+
+    *height = max(lh, rh) + 1;  // height of the current node (largest child node + itself)
+    return max(lh + rh + 1, max(ldiameter, rdiameter));
+
+    // lh + rh + 1 = when the root is part of the diameter.
+    // max(ldiameter, rdiameter) = when root is not part of the diameter.
+}
+//------------------------------------------------------------------------------
 int main()
 {
     // construction of tree

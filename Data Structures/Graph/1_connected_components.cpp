@@ -25,7 +25,7 @@ A cluster of single connected component is called a tree.
 
 ------------------------- SOLVING APPROACH -------------------------------------
 
-1. Initailize all the vertices as visited,
+1. Initailize all the vertices as unvisited,
 2. Iteratively run a dfs(i) algorithm on all the unvisited vertiecs.
 3. At the end of each dfs algorithm all the vertices connected to 'i' will be marked
   as visited and would represent a single connected component.

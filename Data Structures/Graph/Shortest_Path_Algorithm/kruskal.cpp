@@ -53,19 +53,19 @@ int findRoot(int root[], int i)
 
 void Kruskal(struct edge connections[], int n, int e)
 {
-    int root[n];
-    for(int i=0; i<n; i++) root[i] = i;
+    int root[n]; // array that tracks roots of all the connected vertices.
+    for(int i=0; i<n; i++) root[i] = i; // initially each vertix is connected to itself
 
     int count = 0; // tracks the number of vertices picked.
     struct edge MST[n-1]; // vertices in the MST.
     for(int i=0; i<e; i++)
     {
-        if(count < n-1)
+        if(count < n-1)   // continue loop till you have n-1 edges which is maximum amount of edges required to connect all vertices in MST.
         {
             struct edge current_edge = connections[i]; // stores the current connection to be worked on.
             int source_root = findRoot(root, current_edge.source);
             int destination_root = findRoot(root, current_edge.destination);
-            if(source_root != destination_root)
+            if(source_root != destination_root) // if there are no cycles
             {
                 MST[count] = current_edge;
                 count++;

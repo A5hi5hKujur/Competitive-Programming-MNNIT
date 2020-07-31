@@ -27,6 +27,10 @@ Algorithm :
       update the value of key[i] = matrix[vertix][i]
 
 6. Stop when you have visited all the vertices
+
+Complexities :
+1. Adjacency Matrix : O(V x E) where V = no. vertices, E = no. edges
+2. Adjacency List : O(E+V) (adj. list) x O(log V) (binary heap)
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -55,17 +59,6 @@ int minEdge(int key[], int visited[]) // O(n)
   return min_index;
 }
 //-------------------------------------------------------------------------------
-//psudo code to use min heap insted of linear search to find vertix with minimum edge in O(log n)
-// min heap containing pairs(edge weight, vertix) that initially stores all edge weights.
-priority_queue<pair<int,int>, greater<int>()> min_heap;
-min_heap = key[]; // syntactically galat hai bss feel samjho.
-int minEdge()
-{
-  int min_vertix = min_heap.top(); // returns the vertix with the minimum edge weight.
-  min_heap.pop(); // once the vertix is visited it is popped from the heap
-  return min_vertix.second;
-}
-//------------------------------------------------------------------------------
 
 //---------------------------- Prim's Algo -------------------------------------
 
@@ -106,4 +99,53 @@ int main()
   int start = 0;
   Prims(start);
   return 0;
+}
+
+//------------------------- Adjecnecy List + Binary Heap -----------------------
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<pair<int,int>> adj[9];
+vector<bool> visited(9, false);
+priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> min_heap;
+vector<int> key(9, INT_MAX);
+
+void primsMST()
+{
+    min_heap.push({0,0});
+    key[0] = 0;
+    while(!min_heap.empty())
+    {
+        int node = min_heap.top().second;
+        min_heap.pop();
+        visited[node] = true;
+        for(auto neighbor : adj[node])
+        {
+            int weight = neighbor.first;
+            int vertix = neighbor.second;
+            if(!visited[vertix] && key[vertix] > weight)
+            {
+                key[vertix] = weight;
+                min_heap.push({weight, vertix});
+            }
+        }
+    }
+    int sum = 0;
+    for(int i : key)
+        sum += i;
+    cout << sum;
+}
+int main()
+{
+    int v, e;
+    cin >> v >> e;
+    for(int i = 0; i<e; i++)
+    {
+        int v1, v2, w;
+        cin >> v1 >> v2 >> w;
+        adj[v1].push_back({w, v2});
+        adj[v2].push_back({w, v1});
+    }
+    primsMST();
+    return 0;
 }

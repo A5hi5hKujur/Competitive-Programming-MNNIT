@@ -18,7 +18,7 @@ int grid[N][N];
 int visited[N][N];
 int n,m;
 int dx[] = {0, 1, 0, -1};
-int dy[] = {1, 0, -1, 0};       // dx[0],dy[0] = up ; dx[1],dy[1] = right ; dx[2],dy[2] = left ; dx[3],dy[3] = down
+int dy[] = {1, 0, -1, 0};       // dx[0],dy[0] = right ; dx[1],dy[1] = down ; dx[2],dy[2] = left ; dx[3],dy[3] = up
 
 bool validMove(x, y)
 {
