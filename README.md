@@ -42,7 +42,7 @@ This repository contains C++ code of all the topics discussed or I learnt during
     - [Binary Search Tree (BST), Remove](Data%20Structures/Tree/5-BST-remove.c)
     - [Binary Search Tree (BST), Check](Data%20Structures/Tree/10-BST-check.cpp)
     - [Binary Search Tree (BST), Floor/Ceil](Data%20Structures/Tree/12-BST-floor-ceil.cpp)
-  - [Stack](Data%20Structures/Trie)
+  - [Trie](Data%20Structures/Trie)
     - [Trie Create/Add/Search](Data%20Structures/Trie/01_trie.cpp)
     - [Trie Autocomplete](Data%20Structures/Trie/02_auto-complete.cpp)
   - [Stack](Data%20Structures/Stack)
