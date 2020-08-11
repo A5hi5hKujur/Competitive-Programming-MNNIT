@@ -49,6 +49,7 @@ call.
 
 #include <bits/stdc++.h>
 using namespace std;
+//------------------------- Recursion + DP -------------------------------------
 int dp[2000][2000];
 int lcs(string string1, string string2, int n, int m)
 {
@@ -58,9 +59,37 @@ int lcs(string string1, string string2, int n, int m)
   if(n == 0 || m == 0) return dp[n][m] = 0;
 
   // Choice Diagram :
-  if(string1[n-1] == string2[m-1]) return dp[n][m] = 1 + lcs(string1, string2, n-1, m-1);
+  if(string1[n-1] == string2[m-1])
+    return dp[n][m] = 1 + lcs(string1, string2, n-1, m-1);
   else dp[n][m] = 0;
   return max(lcs(string1, string2, n-1, m), lcs(string1, string2, n, m-1));
+}
+//------------------------------------------------------------------------------
+
+//--------------------------- Matrix DP ----------------------------------------
+int lcs(string string1, string string2, int n, int m)
+{
+  int dp[n+1][m+1];
+  for(int i=0; i<=n; i++)
+    for(int j=0; j<=m; j++)
+      if(i == 0 || j == 0)
+        dp[i][j] == 0;            // base case
+
+  int result = 0;                 // stores maximum substring length
+  for(int i=1; i<=n; i++)
+  {
+    for(int j=1; j<=m; j++)
+    {
+      if(string[i-1] == string[j-1])    // when charecters match
+      {
+        dp[i][j] = 1 + dp[i-1][j-1];    // their previous count + 1
+        result = max(result, dp[i][j]); // compare with the already obtained highest
+      }
+      else
+        dp[i][j] = 0;                   // reset current streak to 0 when the substring chain breaks
+    }
+  }
+  return result;                // return the final result.
 }
 int main()
 {

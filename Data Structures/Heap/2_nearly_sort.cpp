@@ -5,6 +5,11 @@
   Observation : Since the ordering would be offset by k position we do not need to
                 sort the entire array, just arr[i] to arr[i+k] for a given i.
 
+  Example :
+    Input : arr[] = {6, 5, 3, 2, 8, 10, 9}
+                k = 3
+    Output : arr[] = {2, 3, 5, 6, 8, 9, 10}
+
   Algorithm :
   1. Create a minimum heap to process k elements at any given time.
   2. iterativly insert elements in the min_heap.

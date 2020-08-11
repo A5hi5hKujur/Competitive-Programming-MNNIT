@@ -93,6 +93,7 @@ void Djikstra(int source, int v)
   {
     auto node = min_heap.top();
     min_heap.pop();
+    visited[node.second] = true;
     if(edge[node.second] < node.first)      // priority queue redundant pair
       continue;
 
@@ -102,7 +103,6 @@ void Djikstra(int source, int v)
       int vertix = neighbor.second;
       if(!visited[vertix] && edge[node.second] + weight < edge[vertix])
       {
-        visited[vertix] = true;
         edge[vertix] = edge[node.second] + weight;
         min_heap.push({edge[vertix], vertix});
       }

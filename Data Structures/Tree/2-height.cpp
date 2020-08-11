@@ -65,7 +65,7 @@ cout << Diameter(root, height);
 int Diameter(node* root, int* height)
 {
     // left height, right height for the case where the diameter passes through root.
-    // left diameterm right diameter for the case where the diameter does not pass through root.
+    // left diameter, right diameter for the case where the diameter does not pass through root.
     int ldiameter = 0, rdiameter = 0, lh = 0, rh = 0;
     if(root == NULL)  // if there is no node
     {

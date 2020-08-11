@@ -37,6 +37,9 @@ for any such function call where there would have been a negetive value for knap
                     Include item                Dont include item
   knap(wt, val, (w - wt[n-1]), n-1)         knap(wt, val, w, n-1)
 
+Time Complexity :
+  Normal Recursion : O(2 ^ N) where N = Number of items
+  Memoized Recursion / Matrix DP : O(N x W) where N = Number of items and W = Weight                 
 ---------------------------------------------------------------------------------------------------------------
 */
 #include <bits/stdc++.h>
@@ -71,6 +74,28 @@ int knap(int items, int knap_cap, int value[], int weight[])
     }
     return dp[items][knap_cap]; // Whatever value is being returned here is the maximum that this branch can return.
 }
+
+//---------------------------------- Iterative DP --------------------------------------------------------------------------------------------------
+int knap(int items, int knap_cap, int value[], int weight[])
+{
+  int dp[items + 1][knap_cap + 1];
+  // Initialize DP matrix with base case.
+  for(int i=0; i<=items; i++) dp[i][0];
+  for(int i=0; i<=knap_cap; i++) dp[0][i];
+
+  for(int i = 1; i<=items; i++)
+  {
+    for(int j = 1; j<=knap_cap; j++)
+    {
+      if(weight[i - 1] > j)
+          dp[i][j] = dp[i-1][j];
+      else
+          dp[i][j] = max(dp[i-1][j], dp[i-1][j - weight[i-1]] + value[]);
+    }
+  }
+  return dp[items][knap_cap];
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------
 
 int main()
 {

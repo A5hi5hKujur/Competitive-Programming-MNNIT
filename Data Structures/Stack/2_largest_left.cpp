@@ -45,3 +45,85 @@ int main()
   }
   return 0;
 }
+
+//---------------------------- Next Larger Variations --------------------------------
+void nextLargerLeft(vector<int> arr)
+{
+    cout << "Next Larger Left \n";
+    int n = arr.size();
+    stack<int> st;
+    int ans[n];
+    for(int i = 0; i<n; i++)
+    {
+        int current = arr[i];
+        while(!st.empty() && st.top() <= current)
+            st.pop();
+        if(st.empty())
+            ans[i] = -1;
+        else
+            ans[i] = st.top();
+        st.push(current);
+    }
+    for(int i=0; i<n; i++)
+        cout << ans[i] << " ";
+}
+void nextLargerRight(vector<int> arr)
+{
+    cout << "Next Larger Right \n";
+    int n = arr.size();
+    stack<int> st;
+    int ans[n];
+    for(int i=n-1; i>=0; i--)
+    {
+        int current = arr[i];
+        while(!st.empty() && st.top() <= current)
+            st.pop();
+        if(st.empty())
+            ans[i] = -1;
+        else
+            ans[i] = st.top();
+        st.push(current);
+    }
+    for(int i=0; i<n; i++)
+        cout << ans[i] << " ";
+}
+void nextSmallerLeft(vector<int> arr)
+{
+    cout << "Next Smaller Left \n";
+    int n = arr.size();
+    stack<int> st;
+    int ans[n];
+    for(int i=0; i<n; i++)
+    {
+        int current = arr[i];
+        while(!st.empty() && st.top() >= current)
+            st.pop();
+        if(st.empty())
+            ans[i] = -1;
+        else
+            ans[i] = st.top();
+        st.push(current);
+    }
+    for(int i=0; i<n; i++)
+        cout << ans[i] << " ";
+}
+void nextSmallerRight(vector<int> arr)
+{
+    cout << "Next Smaller Right \n";
+    int n = arr.size();
+    stack<int> st;
+    int ans[n];
+    for(int i=n-1; i>=0; i--)
+    {
+        int current = arr[i];
+        while(!st.empty() && st.top() >= current)
+         st.pop();
+        if(st.empty())
+            ans[i] = -1;
+        else
+            ans[i] = st.top();
+        st.push(current);
+    }
+    for(int i=0; i<n; i++)
+        cout << ans[i] << " ";
+}

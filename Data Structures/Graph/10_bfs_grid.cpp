@@ -10,6 +10,8 @@
     Traversal behaviour is spiral (traverses neighbouring valid cells)
 
     Concept code.
+
+    Complexity O(V + E)
 */
 #include<bits/stdc++.h>
 #define N 3000
@@ -41,11 +43,10 @@ void bfs(int currX, int currY)
       que.pop();
       for(int i=0; i<4; i++)  // explore cells in 4 direction up,down,left, right
       {
-        if(isValid(x + dx[i], y + dy[i])) // if you find a valid cell
+        int nextX = x + dx[i]; // next x
+        int nextY = y + dy[i]; // next y
+        if(isValid(nextX, nextY)) // if you find a valid cell
         {
-          int nextX = x + dx[i]; // next x
-          int nextY = y + dy[i]; // next y
-
           distances[nextX][nextY] = distances[x][y] + 1;  // update distance of the next cell based on current cell
           visited[nextX][nextY] = true; // mark all next cells as visited
           que.push({nextX, nextY}); // push coordinates into the queue to be further explored.
@@ -69,8 +70,22 @@ int main()
 
   cin >> n >> m;
   int x, y;
-  cin >> x >> y;
+  cin >> x >> y;  // single source.
   bfs(x,y);
 
   return 0;
+}
+
+// -------------------------- MULTI SOURCE BFS ---------------------------------
+void MultSourceBFS(vector<int> graph[],int n,int sources[],int s)
+{
+    queue<int> q;   //Create a queue for BFS
+    for(int i = 0;i < s; i++)
+    {
+        q.push(sources[i]);       //Mark all the source vertices as visited and enqueue it
+        visited[sources[i]] = true;
+    }
+    BFS(graph,q);
+    for(int i = 1; i <= n; i++)    //Printing the distances
+        cout<< i << " " << dist[i] << endl;
 }

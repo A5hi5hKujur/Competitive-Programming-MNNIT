@@ -51,8 +51,8 @@ bool equalSum(int arr[], int n, int sum)
   if(dp[n][sum] == -1)
   {
     // base case :
-    if(n >= 0 && sum == 0) dp[n][sum] = true;
-    if(n == 0 && sum > 0) dp[n][sum] = false;
+    if(n == 0 && sum != 0) dp[n][sum] = false;
+    if(sum == 0) dp[n][sum] = true;
 
     // choice diagram :
     if(arr[n-1] <= sum)

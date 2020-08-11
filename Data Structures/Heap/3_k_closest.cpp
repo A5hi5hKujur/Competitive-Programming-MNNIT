@@ -15,13 +15,13 @@ int main()
     for(int i=0; i<n; i++)
     {
         cin >> arr[i];
-        diff[i] = abs(x - arr[i]);
+        diff[i] = abs(x - arr[i]);  // find absolute difference between x and all the array elements.
     }
     for(int i=0; i<n; i++)
     {
         max_heap.push({diff[i], arr[i]}); // pushing difference and element in the max heap such that difference is the key
-        if(max_heap.size() > k)
-            max_heap.pop();
+        if(max_heap.size() > k)           // same logic as K minimum.
+            max_heap.pop();               // we just changed the priority_queue priority.
     }
     while(max_heap.size() > 0)
     {

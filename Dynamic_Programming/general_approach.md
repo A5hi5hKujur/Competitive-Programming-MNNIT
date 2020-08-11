@@ -4,6 +4,8 @@ IDNETIFYING A DYNAMIC PROBLEM :
 1. The problem should be an "optimization problem" (minimize, maximize, summation).
 2. The problem should involve a "decision-making" component to it, where you have to choose
    an optimal solution out of 2(or more) choices at EVERY step of the selection process.
+3. Because we would be making 2 function calls for the 2 choices, "Overlapping Subproblems" occur,
+   which would do the same computation that has already been done. Dynamic Programming helps resolve this problem.
 
 APPROACH TO SOLVE DYNAMIC PROBLEM (Recursion + Memoization) :
 
@@ -43,7 +45,7 @@ CONVERT TOP-DOWN(MEMOIZATION) TO BOTTOM UP :
   - Decide The constants / variables.
   - Find a recursive solution with base case and everything.
   - Create the dp matrix of size dp[m+1][n+1]. where m and n are the variables driving the dynamic program.
-  - Initialize the matrix 0th row and 0th column, where all the cells in these row and column have the value of the "base-case".
+  - Initialize the matrix "0th row" and "0th column", where all the cells in these row and column have the value of the "base-case".
   - Populating the rest of the dp with the corresponding dp[i][j] values starting from i = 1 ; j = 1.
   - The code for the choice diagram remains the same where answer for a particular sub problem i,j would be stored in dp[i][j].
   - The answer for the "asked problem" of constraint 'm' and 'n', would be in block dp[m][n].

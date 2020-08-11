@@ -173,6 +173,13 @@ void Union(int x, int y){
   conn[y] = 0;
 }
 //------------------------------------------------------------------------------
+//---------------------- Finding Root through recursion ------------------------
+int RootRecursion(int root[], int y)
+{
+  if(root[x] == y) return y;
+    return RootRecursion(root, root[x]);
+}
+//------------------------------------------------------------------------------
 int main()
 {
   cout << "Enter the total number of members in the arr : ";

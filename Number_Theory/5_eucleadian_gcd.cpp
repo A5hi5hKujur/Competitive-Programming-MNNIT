@@ -9,6 +9,12 @@
 
   The algorithm is derived from the property :
   gcd(a,b) = gcd(a = a-b, b) (until a < b)
+
+
+  LCM : Lowest Common multiple : Lowest number that can be completely divided by both a and b :
+  LCM(a, b) = (a x b) / GCD(a, b) 
+
+  Time Complexity : O(Log min(a, b))
 */
 #include <bits/stdc++.h>
 using namespace std;

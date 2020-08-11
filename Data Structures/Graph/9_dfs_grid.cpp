@@ -10,6 +10,8 @@
     Traversal behaviour is linear. (traverses adjoint valid cells and then backtracks)
 
     Concept code.
+
+    Time Complexity : O(V + E)
 */
 #include<bits/stdc++.h>
 #define N 3100

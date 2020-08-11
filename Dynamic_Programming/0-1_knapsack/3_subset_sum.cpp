@@ -1,7 +1,7 @@
 /*
   ------------------------------ Problem Statement -----------------------------
 
-  Given an array of unsorted strings find if there exists a subset of the array,
+  Given an array of unsorted numbers find if there exists a subset of the array,
   comprised of the elements of the array, that form a sum "k".
 
   ------------------------------- Solving Approach -----------------------------
@@ -70,4 +70,48 @@ int main()
   if(subset(arr, n, sum)) cout << "It is possible to form a subset";
   else cout << "It is not possible";
   return 0;
+}
+
+
+//-------------------------------------- Iterative Method -----------------------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    // Input Stream
+    int n, sum;
+    cin >> n >> sum;
+    int arr[n];
+    for(int i=0; i<n; i++)
+        cin >> arr[i];
+
+    // Initialize base Case : Can be optimized to O(n) but the overall complexity is O(n*sum)
+    bool dp[n+1][sum+1];
+    for(int i=0; i<=n; i++)
+    {
+        for(int j=0; j<=sum; j++)
+        {
+            if(i == 0 && j != 0)  // when items are exhausted and the sum is not satisfied.
+                dp[i][j] = false;
+            if(j == 0)            // when the sum is satisfied.
+                dp[i][j] = true;
+        }
+    }
+
+    for(int i=1; i<=n; i++)       // iterate all items
+    {
+        for(int j=1; j<=sum; j++)   // iterate the sums
+        {
+            if(arr[i-1] > j)        // if item on the (i-1)th index of arr is greater than the sum to satisfy (j), item cannot be included.
+                dp[i][j] = dp[i-1][j];
+            else
+                dp[i][j] = dp[i-1][j - arr[i-1]] || dp[i-1][j];     // to include or not to incude.
+        }
+    }
+    if(dp[n][sum])
+        cout << "Subset Sum exists";
+    else
+        cout << "Subset Sum doesnt exist";
+    return 0;
 }

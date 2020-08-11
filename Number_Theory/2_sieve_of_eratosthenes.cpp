@@ -28,6 +28,9 @@
   The subproblems would be all the composite numbers. Skipping over marked numbers
   is a perfect demonstration of the subproblems overlapping since if they did not
   overlap we wouldn't be skipping over them.
+
+  Time Complexity : O(N log (log N))
+  Space Complexity : O(N)
 */
 #include <bits/stdc++.h>
 using namespace std;

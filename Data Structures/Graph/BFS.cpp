@@ -40,6 +40,8 @@
              of the queue (whatever vertix was first queued for exploration).
              Note : In the case of undirected graph you only need to traverse either row or coloumn (since indegee == outdegree)
     Step 7 : When encounterd an adjecent vertix which is not visited yet, REPEAT step 1 to step 4.
+
+    Time Complexity : O(V + E)
 ----------------------------------------------------------------------------------------------------------------------------
 */
 #include<bits/stdc++.h>

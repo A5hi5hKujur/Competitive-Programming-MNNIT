@@ -37,6 +37,8 @@
     Step 4 : Take the topmost vertix(which represents the deepest vertix) at that time,
              and print it if not visited, after which mark it visited.
     Step 5 : When encounterd an adjecent vertix which is not visited yet, push it in the explore stack and repeat.
+
+    Time Complexity : O(V + E)
 ----------------------------------------------------------------------------------------------------------------------------
 */
 #include<bits/stdc++.h>

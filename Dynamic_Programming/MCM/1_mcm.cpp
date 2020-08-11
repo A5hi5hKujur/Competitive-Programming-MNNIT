@@ -5,19 +5,40 @@
   matrices together. The problem is not actually to perform the multiplications,
   but merely to decide in which order to perform the multiplications.
   Eg :
-           AxB          BxC
-  (AB)C = (10×30×5) + (10×5×60) = 1500 + 3000 = 4500 operations
-  A(BC) = (30×5×60) + (10×30×60) = 9000 + 18000 = 27000 operations.
+  Input Array = [10, 30, 5, 60]
+  This will generate 3 matrices :
+  A : 10 x 30   ;   B : 30 x 5  ;  C : 5 x 60
 
-  Operation calculation :
-  let arr = 1 2 3
-  matrix a = 1 x 2
-  matrix b = 2 x 3
+  Operation Variation 1 :
+  (AB)C :
+    (AB) = (10×30 x 30×5)
+           10 x (30 x 30) x 5       resultant matrix will be (10 x 5)
+           10 x 30 x 5 = 1500
+    (AB)xC = 10 x 5  x 5 x 60
+             10 x 5 x 60 = 3000
+    Total Cost = 1500 + 3000 = 4500 operations
 
-  operation axb = 1 x (2 X 2) x 3
-                      common
+  Operation Variation 2 :
+  A(BC) :
+    (BC) = (30x5 x 5x60)
+           30 x (5 x 5) 60          resultant matrix would be (30 x 60)
+           30 x 5 x 60 = 18000
+    A(BC) = (10x30 x 30x60)
+          = 10 x (30 x 30) x 60
+          = 10 x 30 x 60 = 9000
+    Total Cost = 9000 + 18000 = 27000 operations
 
-  operation cost = 1 x 2 x 3 = 6
+    Operation Variation 1 is cleary more optimal.
+
+  ---------------------------- MCM Identification ------------------------------
+  Any perticular probem which requires grouping of elements and processing them.
+  For example in this instance :
+
+    Input :                            A B C D
+    Groupings :          (A B) (C D)    (A B C) D      A (B C D)
+
+    Here we illustrate grouping by representing them with brackets, during the
+    implimentation we use 3 variables to divide the array (elements)
   ------------------------ General Format --------------------------------------
 
   - This algorithm follows divide and conquer technique where the data is divided
@@ -101,6 +122,7 @@
   M4 = 10 x 30                and goes upto index n-1.
 
   The range should consist of atleast 2 elements to be computed.
+  BASE CASE :
   Case 1 :  i == j states there is a single element.
   Case 2 : and i > j states that there are no element. T
   the algorithm wont work in either of these 2 cases. therefor base case should be
@@ -114,18 +136,19 @@ int mcm(int arr[], int i, int j)
 {
   if(dp[i][j] != -1) return dp[i][j];
 
-  if(i >= j) return dp[i][j] = 0;
+  if(i >= j) return dp[i][j] = 0;   // base case
   int mn = INT_MAX;
-  for(int k = i; k<j; k++)
+  for(int k = i; k<j; k++)          // partition loop
   {
     int partition1, partition2;
-    if(dp[i][k] != -1) partition1 = dp[i][k];
-    else partition1 = mcm(arr, i, k);
+    if(dp[i][k] != -1) partition1 = dp[i][k]; // if this partition already exists refer dp
+    else partition1 = mcm(arr, i, k);         // partition 1 : i to k
 
-    if(dp[k+1][j] != -1) partition2 = dp[k+1][j];
-    else partition2 = mcm(arr, k+1, j);
+    if(dp[k+1][j] != -1) partition2 = dp[k+1][j]; // if this partition already exists refer dp
+    else partition2 = mcm(arr, k+1, j);           // partition 2 : k+1 to j
 
-    int temp =  partition1 + partition2 + (arr[i-1] * arr[k] * arr[j]);
+    int temp =  partition1 + partition2 + (arr[i-1] * arr[k] * arr[j]); //(first elemnt of partion1 x common elemnt of both partition x last element of partition2)
+    // cost of part1 + cost of part2 + cost of multiplying part1 and part2
     mn = min(temp, mn);
   }
   return dp[i][j] = mn;
@@ -140,6 +163,6 @@ int main()
   int arr[n];
   cout << "Enter matix data : \n";
   for(int i=0; i<n; i++) cin >> arr[i];
-  cout << "Minimum operations : " << mcm(arr, 1, n-1);
+  cout << "Minimum operations : " << mcm(arr, 1, n-1);   // dimensions i : 1  to j : n-1
   return 0;
 }
