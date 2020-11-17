@@ -176,8 +176,8 @@ void Union(int x, int y){
 //---------------------- Finding Root through recursion ------------------------
 int RootRecursion(int root[], int y)
 {
-  if(root[x] == y) return y;
-    return RootRecursion(root, root[x]);
+  if(root[y] == y) return y;
+    return RootRecursion(root, root[y]);
 }
 //------------------------------------------------------------------------------
 int main()

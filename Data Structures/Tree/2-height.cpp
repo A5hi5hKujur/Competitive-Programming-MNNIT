@@ -49,8 +49,7 @@ int maxDepth(struct node* parent)
    int right_height = maxDepth(parent -> right);// recursively find height of right path
 
    // Compare the height of left and right path
-   if(left_height > right_height) return left_height + 1;
-   else return right_height + 1;
+   return max(left_height, right_height) + 1;
    // return the path of the maximum height + 1 (+1 : the curent node will included in the height count)
 }
 //------------------------------------------------------------------------------

@@ -21,9 +21,9 @@ int main()
     /*
       (Clockwise)
       dir = 0 : left to right. (on topmost row)
-      dir = 1 : top to bottom. (on rightost column)
+      dir = 1 : top to bottom. (on leftmost column)
       dir = 2 : right to left. (on bottomost row)
-      dir = 3 : bottom to top. (on leftmost column)
+      dir = 3 : bottom to top. (on rightmost column)
 
       (Anti Clockwise)
       dir = 0 : top to bottom (on leftmost column)

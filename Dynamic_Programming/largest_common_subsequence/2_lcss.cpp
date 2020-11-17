@@ -50,19 +50,40 @@ call.
 #include <bits/stdc++.h>
 using namespace std;
 //------------------------- Recursion + DP -------------------------------------
-int dp[2000][2000];
-int lcs(string string1, string string2, int n, int m)
+int ans;
+int lcs(int n1, int n2, string s1, string s2, vector<vector<int>>& dp)
 {
-  if(dp[n][m] != -1) return dp[n][m];
+    if(dp[n1][n2] != -1) return dp[n1][n2];
+    if(n1 == 0 || n2 == 0)
+        return 0;
 
-  // Base Case :
-  if(n == 0 || m == 0) return dp[n][m] = 0;
+    lcs(n1, n2-1, s1, s2, dp);
+    lcs(n1-1, n2, s1, s2, dp);
 
-  // Choice Diagram :
-  if(string1[n-1] == string2[m-1])
-    return dp[n][m] = 1 + lcs(string1, string2, n-1, m-1);
-  else dp[n][m] = 0;
-  return max(lcs(string1, string2, n-1, m), lcs(string1, string2, n, m-1));
+    if(s1[n1-1] == s2[n2-1])
+    {
+        dp[n1][n2] = lcs(n1-1, n2-1, s1, s2, dp) + 1;
+        ans = max(ans, dp[n1][n2]);
+        return dp[n1][n2];
+    }
+    return dp[n1][n2] = 0;
+}
+int main()
+{
+	int t;
+	cin >> t;
+	while(t--)
+	{
+	    ans = 0;
+	    int n,m;
+	    cin >> n >> m;
+	    string x,y;
+	    cin >> x >> y;
+	    vector<vector<int>> dp(n+1,vector<int>(m+1, -1));
+	    lcs(n,m,x,y,dp);
+	    cout << ans << "\n";
+	}
+	return 0;
 }
 //------------------------------------------------------------------------------
 
