@@ -15,22 +15,24 @@ Min-Heap: Root node must be MINIMUM among all of it’s children.
   left child = arr[2*i]
   right child = arr[2*i + 1]
 
+* Parent of a node = arr[i/2]
+
 * Height of a heap is always Log n.
 
 ------------------------------------- INSERTION IN HEAP -------------------------------------
 
 Insertion time of a single element : O(log n)
-1. If n = length of the heap, the new element should be inserted in (n+1)th position.
+1. If n = length of the heap, the new element should be inserted in (n+1)th position and increase the size of heap.
 2. After insertion we make sure that it follows the rule of the heap(either min or max).
     - In case of max heap : new element should be smaller than all its descendents.
     - In case of min heap : new element should be greater than all its descendents.
-3. If the new element does not follow step 2, then keep moving up the new element by comparing
-   it with its parent at (i/n)th position and swapping them untill step 2 is valid.
+3. HeapifyUp() : If the new element does not follow step 2, then keep moving up the new element by comparing
+   it with its parent at (i/2)th position and swapping them untill step 2 is valid.
 
 ---------------------------------------- CREATION OF A HEAP ----------------------------------
 
 Insertion time for n elements : O(nlogn)
-1. itteratively insert new elements on the ith position starting from i = 2.
+1. iteratively insert new elements on the ith position starting from pos = 1.
 2. Repeat the insertion heap procedure.
 
 ------------------------------------- Deletion from HEAP -------------------------------------
@@ -54,93 +56,141 @@ Insertion time for n elements : O(nlogn)
 
 --------------------------------------------------------------------------------------------------
 */
+
 #include <bits/stdc++.h>
 using namespace std;
-int n; // Size of heap
-vector<int> min_heap(n+1); // Min Heap
-vector<int> max_heap(n+1); // Max Heap
-
-//-------------------------- Function to create Max Heap -----------------------------------------
-void maxHeap(vector<int> arr, int n) // arguments : input string , number of elements
+class MaxHeap
 {
-  max_heap = arr; // initialize heap array with the input array.
-  for(int i=2; i<=n; i++) // starting from the 2nd element to the last element
-  {
-    int j = i; // include the element to the heap from the back
-    while(max_heap[j] > max_heap[j/2] && j > 1) // while child is greater than the parent and pointer is upto the root element.
+    private:
+    int size;               // total size of the array which is used to implement the heap.
+    int pos;                // position where a new element is inserted at the time of push. It also marks the size of heap
+    vector<int> arr;        // array through which heap is implimented (1 indexed for convinence)
+
+    public:
+
+    //-------------------- HEAP INITIALIZATION ---------------------------------
+    MaxHeap(int n)
     {
-        swap(max_heap[j], max_heap[j/2]); // keep swapping the greater child to the smaller parent.
-        j = j/2; // move on to the next parent.
+        vector<int> temp(n+1);
+        size = n;
+        arr = temp;
+        pos = 1;
     }
-  }
-  cout << "Max Heap : \n";
-  for(int i=1; i<=n; i++) cout << max_heap[i] << " ";
-}
-//-------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
-//--------------------------------------- Funtion to create Min Heap ----------------------------------
-void minHeap(vector<int> arr, int n)
-{
-  min_heap = arr;
-  for(int i=2; i<=n; i++)
-  {
-    int j = i;
-    while(min_heap[j] < min_heap[j/2] && j > 1) // same process as max heap but here we check if the parent has mimimum value.
+    //-------------------- INSERT NEW ELEMENT IN HEAP --------------------------
+    void push(int x)
     {
-        swap(min_heap[j], min_heap[j/2]);
-        j = j/2;
+        if(pos > size)        // if the new insertion exceeds the array capacity
+            reorder();        // create a new array with 2x the size and copy all elements over
+        arr[pos++] = x;       // add element in the correct 'pos' and point to next pos.
+        heapifyUp();          // *IMPORTANT* bubble "up" to the new element to its correct spot
     }
-  }
-  cout << "Min Heap : \n";
-  for(int i=1; i<=n; i++) cout << min_heap[i] << " ";
-}
-//--------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
-//--------------------------------------- Function to delete elements from heap ----------------------------
-void Delete(int n) // working range for deletion
-{
-    swap(max_heap[1], max_heap[n]); // swap the max element with the last element.
-    int i = 1; // first parent (root), must place it in its correct spot.
-    int j = 2*i; // first child of root.
-    while((max_heap[i] < max_heap[j] || max_heap[i] < max_heap[j+1]) && j < n-1) // if node element is smaller than either of its children
+    //---------------- REMOVE TOP ELEMENT OF THE HEAP --------------------------
+    int pop()
     {
-        if(max_heap[j] > max_heap[j+1]) // if the left child is bigger
+        if(pos == 1) return -1;   // underflow
+        int val = arr[1];         // top element is always at index 1
+        arr[1] = arr[pos-1];      // replace the root with the last element.
+        pos--;                   // reduce the size of heap
+        heapifyDown();           // *IMPORTANT* bubble "down" the root element to its correct spot
+        return val;
+    }
+    //--------------------------------------------------------------------------
+    int peak()
+    {
+        if(pos == 1) return -1;
+        return arr[1];
+    }
+    bool isEmpty()
+    {
+        return pos == 1;
+    }
+    //----------------- HEAPIFY AT THE TIME OF DELETION ------------------------
+    /*
+      index  = current node. (parent)
+      left child = left child of current node (index * 2)
+      right child = right child of current node (index * 2 + 1)
+
+      Max heap : compare with bigger child
+      Min heap : compare with smaller child
+
+    */
+    void heapifyDown()
+    {
+        int index = 1;           // start with root
+        int bigger_child, left_child, right_child;
+        left_child = (index * 2 < pos)? arr[index * 2] : INT_MIN;         // left child value if its within bounds
+        right_child = (index * 2 < pos)? arr[index * 2 + 1] : INT_MIN;    // right child value if its within bounds
+        bigger_child = (left_child > right_child)? index * 2 : index * 2 + 1; // index of the greater value child
+
+        // As long as the bigger child index is within bound and its size is greater than(for maxheap) its parent
+        while(bigger_child < pos && arr[index] < arr[bigger_child])
         {
-            swap(max_heap[i], max_heap[j]); // swap parent with the left child
-            i = j; // now follow the path of the left child
+            swap(arr[index], arr[bigger_child]);  // swap parent with child
+            index = bigger_child;                 // the child has now become the parent.
+            // compute for its children now.
+            left_child = (index * 2 < pos)? arr[index * 2] : INT_MIN;
+            right_child = (index * 2 < pos)? arr[index * 2 + 1] : INT_MIN;
+            bigger_child = (left_child > right_child)? index * 2 : index * 2 + 1;
         }
-        else // if the right child is bigger
-        {
-            swap(max_heap[i], max_heap[j+1]); // swap parent with the right child
-            i = j+1; // now follow the path of the right child
-        }
-        j = 2*i; // first child of whatever path i is in.
     }
-}
-//------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
 
-//------------------------------- Function for Heap sort ----------------------------
-void heapSort(int n) // total number of elements in the heap.
-{
-    for(int i=n; i > 1 ; i--) // starting from the complete heap length
-    { // to shrinking it by 1 position at each iteration.
-        Delete(i);
+    //------------- HEAPIFY AT THE TIME OF INSERTION ---------------------------
+    /*
+    swap current node with its parent until parent is smaller than (for max heap) the current node or you've reached the root.
+    */
+    void heapifyUp()
+    {
+        int index = pos - 1;                        // position of last insertion
+        while(index > 1)                           // until you reach the root
+        {
+            int parent = index / 2;               // get parent address
+            if(arr[parent] < arr[index])          // if parent element < current element
+                swap(arr[parent], arr[index]);    // swap
+            else
+                break;                            // if not, then stop.
+
+            index = parent;                        // move up.
+        }
     }
-    cout << "\nAscending sort : \n";
-    for(int i=1; i<=n; i++) cout << max_heap[i] << " ";
-}
-//----------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
+
+    //----------- RESIZE ABSTRACT DS when it exceeds its size ------------------
+    void reorder()
+    {
+        int new_size = size * 2;
+        vector<int> temp(new_size + 1);
+        for(int i = 1; i<=size; i++)
+            temp[i] = arr[i];
+        arr = temp;
+        size = new_size;
+    }
+    //--------------------------------------------------------------------------
+};
 int main()
 {
-  cout << "Enter the size of the heap : ";
-  cin >> n;
-  vector<int> arr(n+1);
-  cout << "Enter " << n <<" elements : \n";
-  for(int i=1; i<=n; i++) cin >> arr[i];
-  maxHeap(arr,n);
-  cout << "\n";
-  minHeap(arr,n);
+    MaxHeap max_heap(7);
+    max_heap.push(50);
+    max_heap.push(30);
+    max_heap.push(40);
+    max_heap.push(1);
+    max_heap.push(20);
+    max_heap.push(100);
+    max_heap.push(50);
+    max_heap.push(30);
+    max_heap.push(40);
+    max_heap.push(1);
+    max_heap.push(20);
+    max_heap.push(100);
 
-  heapSort(n);
-  return 0;
+    while(!max_heap.isEmpty())
+    {
+        cout << max_heap.pop() << "\n";
+    }
+
+    return 0;
 }
